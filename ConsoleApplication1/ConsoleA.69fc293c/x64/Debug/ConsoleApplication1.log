@@ -1,0 +1,4 @@
+﻿  main.c
+C:\Users\Natalia_Viskovatykh\source\repos\ConsoleApplication1\main.c(13,43): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\Natalia_Viskovatykh\source\repos\ConsoleApplication1\main.c(34,26): warning C4133: 'function': incompatible types - from 'char [260]' to 'LPWSTR'
+  ConsoleApplication1.vcxproj -> C:\Users\Natalia_Viskovatykh\source\repos\ConsoleApplication1\x64\Debug\ConsoleApplication1.exe
