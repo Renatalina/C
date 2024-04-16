@@ -1,11 +1,11 @@
 #include <stdio.h>
 
-int set_bit(unsigned char first, unsigned char mask)
+int set_bits(unsigned char first, unsigned char mask)
 {
 	return first | mask;
 }
 
-void check_bit(unsigned char first, unsigned char mask)
+void check_bits(unsigned char first, unsigned char mask)
 {
 	if ((first & mask) == mask)
 	{
@@ -17,12 +17,12 @@ void check_bit(unsigned char first, unsigned char mask)
 	}
 }
 
-int clear_bit(unsigned char first, unsigned char mask)
+int clear_bits(unsigned char first, unsigned char mask)
 {
 	return first & mask;
 }
 
-int toggle_bit(unsigned char first, unsigned char mask) 
+int toggle_bits(unsigned char first, unsigned char mask) 
 {
 	return first ^ mask;
 }
@@ -30,7 +30,7 @@ int toggle_bit(unsigned char first, unsigned char mask)
 //Write a function that determines whether the transmitted integer parameter is even and odd
 void check_odd_or_even(int var)
 {
-	if (var % 2)
+	if (var & 1)
 		printf("The digital is odd");
 	else
 		printf("The digital is even");
@@ -41,15 +41,15 @@ int main(void)
 	 unsigned char var = 5;
 	 unsigned char mask = 4;
 
-	 check_bit(var, mask);
+	 check_bits(var, mask);
 
-	 int set = set_bit(var, mask);
+	 int set = set_bits(var, mask);
 	 printf("set bit %d\n", set);
 
-	 int clear = clear_bit(var, mask);
+	 int clear = clear_bits(var, mask);
 	 printf("clear bit %d\n", clear);
 
-	 int toggle = toggle_bit(var, mask);
+	 int toggle = toggle_bits(var, mask);
 	 printf("Toggle bit %d\n", toggle);	
 
 	 int check_digital;
