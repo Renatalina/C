@@ -16,19 +16,13 @@ int power_while(int num, int extent)
 
 int power_for(int num, int extent)
 {
-	if (extent == 1)
-		return num;
+	int power_num = extent > 0 ? num : 0;
 
-	else if (extent != 0 && num != 0) 
-		for (int x = 1, power_num = num; x <= extent; x++) {
-			power_num *= num;
+	for (int x = 1; x < extent; x++) {
+		power_num *= num;
+	} 
 
-			if (x == extent - 1)
-				return power_num;
-		} 
-
-	else
-		return 0;
+	return power_num;
 }
 
 //Write a program to print the number days in the months using switch statement.
