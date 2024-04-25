@@ -85,7 +85,7 @@ int main(void)
 
 	char letter;
 	printf("Please, enter the letter\n");
-	int check_letter = scanf_s(" %c", &letter);
+	int check_letter = scanf(" %c", &letter);
 	if (check_letter != 1) {
 		printf("Error: Invalid input\n");
 	}
@@ -95,8 +95,8 @@ int main(void)
 
 	int month, year;
 	printf("Please, enter the month and year: \n");
-	int checkt_month_year = scanf_s("%d  %d", &month, &year);
-	if (checkt_month_year != 2) {
+	int check_month_year = scanf_s("%d  %d", &month, &year);
+	if (check_month_year != 2) {
 		printf("Error: Invalid input\n");
 	}
 	else {
