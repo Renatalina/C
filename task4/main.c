@@ -3,27 +3,32 @@
 //Write a program to calculate power using while & for loop
 int power_while(int num, int extent)
 {
-	int power_num = num, index = 1;
+	int power_num = num;
 
-	while (index < extent)
+	while (extent > 1)
 	{
 		power_num *= num;
-		index++;
+		--extent;
 	}
 
-	return power_num;
+	return extent > 0 ? power_num : 0;
 }
 
 int power_for(int num, int extent)
 {
-	for (int x = 1, power_num = num; x <= extent; x++) {
-		power_num *= num;
+	if (extent == 1)
+		return num;
 
-		if (x == extent - 1)
-			return power_num;
-	}
+	else if (extent != 0 && num != 0) 
+		for (int x = 1, power_num = num; x <= extent; x++) {
+			power_num *= num;
 
-	return 0;
+			if (x == extent - 1)
+				return power_num;
+		} 
+
+	else
+		return 0;
 }
 
 //Write a program to print the number days in the months using switch statement.
@@ -53,7 +58,7 @@ void check_month(int month, int year)
 		break;
 	}
 
-	day ? 
+	day && year >= 0 ? 
 		printf("This month has a %d day on the year\n", day) :
 		printf("You are mistaken when input the date, Bye! \n");
 	return;
@@ -62,9 +67,11 @@ void check_month(int month, int year)
 //Write a program to check uppercase or lowercase alphabets.
 void check_literals(char a)
 {
-	a < 'Z' ? 
+	(a <= 'Z' && a >= 'A') || (a >= 'a' && a <= 'z') ?
+		a <= 'Z' ?
 		printf("%c is Upper case \n", a) :
-		printf("%c is lower case \n", a);
+		printf("%c is lower case \n", a)
+		: printf("\n The %c is not a letter\n", a);
 
 	return;
 }
