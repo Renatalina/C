@@ -1,23 +1,8 @@
-#include <stdio.h>
+#ifndef ___RECURSIVESTRING
+#define ___RECURSIVESTRING
 
-void print_str(char *str, int index) {
+void print_str(char* str, int index);
 
-	if ((int)str[index] == 10) {
-		return;
-	}
+void recursive_printf_str(void);
 
-	print_str(str, ++index);
-
-	printf(" %c  ", str[index-1]);
-}
-
-extern void recursive_printf_str(void) {
-
-	char sentence[100];
-
-	printf("\nPlease, enter a sentence for print: \n");
-	fgets(sentence, 100, stdin);
-	print_str(sentence, 0);
-
-	return;
-}
+#endif //___RECURSIVESTRING
