@@ -56,7 +56,7 @@ void use_lib_sum(void) {
 	int sum = 0;
 
 	printf("Please, enter the stuck of numbers: \n");
-	fgets(str, 100, stdin);
+	fgets(str, 99, stdin);
 
 	token = strtok(str, s);
 

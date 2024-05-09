@@ -1,8 +1,8 @@
 #include <stdio.h>
 
-void print_str(char* str, int index) {
+static void print_str(char* str, int index) {
 
-	if (str[index] == (char)10 || str[index] == "\r") {
+	if (str[index] == "\r" || str[index] == "\r") {
 		return;
 	}
 
