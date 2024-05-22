@@ -2,7 +2,7 @@
 
 static void print_str(char* str, int index) {
 
-	if (str[index] == "\r" || str[index] == "\r") {
+	if (str[index] == '\n' || str[index] == '\r') {
 		return;
 	}
 
