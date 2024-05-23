@@ -38,8 +38,19 @@ void quicksort(int arr[], int low, int high) {
     }
 }
 
+void qsort_third(int arr[], size_t size, int (*compare)(const void*, const void*)) {
+    
+    for (int i = 0; i < size; i++) {
+        for (int k = 0; k < size; k++) {
+            if (compare(&arr[i], &arr[k]) < 0) {
+                swap(&arr[i], &arr[k]);
+            }
+        }
+    }
+}
+
 //it's my favorite method to sort the array))
-void qsort_second(int arr[], int size) {
+void qsort_second(int arr[], size_t size) {
     for(int i=0; i< size; i++) {
         for(int y=0; y< size; y++) {
             if(compare(&arr[i], &arr[y]) < 0) {
@@ -50,8 +61,8 @@ void qsort_second(int arr[], int size) {
 }
 
 int main(){
-    int arr[15];
-    int size = sizeof(arr)/sizeof(arr[0]);
+    int arr[10];
+    size_t size = sizeof(arr)/sizeof(arr[0]);
 
     fillArray(arr, size);
   
@@ -61,7 +72,8 @@ int main(){
     }
 
     // quicksort(arr, 0, size-1);
-    qsort_second(arr, size);
+    //qsort_second(arr, size);
+    qsort_third(arr, size, &compare);
     
     printf("\nSorted array: \n");
     for(int i = 0; i<size; i++){
