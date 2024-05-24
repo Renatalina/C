@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <stdlib.h>
 #include <string.h>
 #include <vadefs.h>
 
@@ -8,7 +9,7 @@
 typedef struct stack_t {
     char name[MAX_LENGHT];
     char lastname[MAX_LENGHT];
-    void* x;
+    struct stack_t *prev_elem;    
 } stack_t;
 
 stack_t stack_new ( void ) {
@@ -20,19 +21,18 @@ bool stack_empty ( stack_t stk ) {
 }
 
 void stack_push ( stack_t stk , void *x) {
-    stk.x = x;
+    stk.prev_elem=x;
 }
 
-void * stack_pop ( stack_t stk ) {
-
+void *stack_pop ( stack_t stk, stack_t next ) {
+    next.prev_elem = stk.prev_elem;
 }
 
-void stack_free ( stack_t * stk ) {
-
+void stack_free ( stack_t *stk ) {
+    free(stk);
 }
 
 int main(){
-
-
+    
     return 0;
 }
