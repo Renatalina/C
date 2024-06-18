@@ -37,14 +37,9 @@ void compare_stk(VECTOR* first, VECTOR* second) {
     }
 }
 //Implement a program to extract and print individual bytes from an unsigned int using the following union:
-struct data {
-    unsigned a: 5;
-    unsigned s: 5;
-};
-
 union tagname
 {
- unsigned a: 5;
+ unsigned a;
  unsigned char s[4];
 };
 
@@ -59,6 +54,12 @@ int main ( void) {
     top = list_pop(top);
     printf("%d\n", top);
 
+    union tagname example;
+    example.a = 123456;  
+    for(int i = 0; i < 4; i++) {
+        printf("%d байт: %u\n", i + 1, example.s[i]);
+    }
 
-return 0;
+
+    return 0;
 }
