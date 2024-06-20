@@ -41,40 +41,25 @@ ListNode* list_add(ListNode* where, int new_data) {
 } //вернёт ссылку на новый узел списка
 
 int list_delete(ListNode *head, ListNode *where) {
-    //if we try remove the head of our list
-    if(head == where) {
-        return 0;
-    }
     
-    if(head->next != NULL) {
-        ListNode *find_elem = head;
+    if(head->next != NULL) {            
+            ListNode *remove_elem = where->next; 
+            int return_data = remove_elem->data;
 
-        while (find_elem->next->data != where->data)
-        {
-            find_elem=find_elem->next;            
-            if(find_elem->next == NULL) break;
-        }  
-
-        if(find_elem->next->data == where->data) {
-            int return_data = where->data;
-            if(where->next != NULL) {
-                find_elem->next=where->next;
+            if(remove_elem->next != NULL) {
+                where->next = remove_elem->next;
             } else {
-                //if it first or last elem
-                find_elem->next = NULL;
+                where->next = NULL;
             }
-            free(where);
-            return return_data;
-        }
+            free(remove_elem);
+            return return_data;        
 
     } else {
-        //проверка, вдруг мы в голову где-то что-то записали.
-        return head->data ? head->data : 0;
+        return 0;
     }    
 
     return 0;
 } //пусть возвращает элемент
-//наверное не элемент, а его данные, раз у нас стоит int 
 
 void list_print(ListNode* head) {
 
@@ -100,7 +85,7 @@ int main () {
 
     list_print(head); // 1 3 5 6
 
-    printf("Deleted %d\n", list_delete(head, head)); //должно быть 6
+    printf("Deleted %d\n", list_delete(head, second)); //должно быть 6
     
     list_print(head); // 1 5 7
 
