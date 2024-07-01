@@ -2,19 +2,14 @@
 #include <string.h>
 #include <ctype.h>
 
+#define MAX_LEN 50
+#define BYTE_SIZE 8
+
 //Take two strings as arguments. 
 //If the first exists in the second as a substring, return a pointer to the first occurrence, otherwise zero.
 char *find_substring(char *str1, char *str2)
 {
-    char *ptr = strstr(str2, str1);
-    if(ptr != NULL)
-    {
-        return ptr;
-    }
-    else
-    {
-        return 0;
-    }
+    return strstr(str2, str1);    
 }
 
 //Write function that determine endianness at run time.
@@ -29,11 +24,16 @@ void check_endian() {
 
 //Write function for reversing the byte order (swap endianness).
 unsigned int swap_endianness(unsigned int x) {
-    x = (x >> 24) |
-        ((x<<8) & 0x00FF0000) |
-        ((x>>8) & 0x0000FF00) |
-        (x << 24);
-    return x;
+
+    unsigned int size = sizeof(x);
+    unsigned int reversed = 0;
+
+    for (int i = 0; i < size; i++) {
+        unsigned int tmp = (x >> (BYTE_SIZE * i)) & 0xff;
+        reversed |= tmp << (BYTE_SIZE * (size - 1 - i));
+    }
+
+    return reversed;
 }
 
 //Write function that find the largest and smallest word in a string.
@@ -53,11 +53,13 @@ void find_max_min_str(const char *input_str, char *max_str, char *min_str){
             word[j] = '\0';
             if(j > max){
                 max = j;
-                strcpy(max_str, word);
+                strncpy(max_str, word, MAX_LEN-1);
+                max_str[MAX_LEN-1] = '\0'; 
             }
             if(j < min){
                 min = j;
-                strcpy(min_str, word);
+                strncpy(min_str, word, MAX_LEN-1);
+                min_str[MAX_LEN-1] = '\0';
             }
             j = 0;
         }
@@ -90,8 +92,8 @@ int main()
 
 
 
-    char str[] = "It  is f string with smallest and largest word";
-    char min[50], max[50];
+    char str[] = "It    is a string with     smallest and largest word";
+    char min[MAX_LEN], max[MAX_LEN];
     find_max_min_str(str, max, min);
     printf("The smallest word is: %s\n", min);
     printf("The largest word is: %s", max);
